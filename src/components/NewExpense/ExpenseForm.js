@@ -3,15 +3,15 @@ import { useState } from "react";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmout, setEnteredAmount] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
   };
 
-  const amoutChangeHandler = (event) => {
-    setEnteredAmount(event.target.value)
+  const amountChangeHandler = (event) => {
+    setEnteredAmount(event.target.value);
   };
 
   const dateChangeHandler = (event) => {
@@ -22,14 +22,14 @@ const ExpenseForm = (props) => {
     event.preventDefault();
     const expenseData = {
       title: enteredTitle,
-      amout: enteredAmout,
+      amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    
+
     props.onSaveExpenseData(expenseData);
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
 
   return (
@@ -37,16 +37,20 @@ const ExpenseForm = (props) => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
-          <label>Amout</label>
+          <label>Amount</label>
           <input
             type="number"
             min="0.01"
             step="0.01"
-            value={enteredAmout}
-            onChange={amoutChangeHandler}
+            value={enteredAmount}
+            onChange={amountChangeHandler}
           />
         </div>
         <div className="new-expense__control">
